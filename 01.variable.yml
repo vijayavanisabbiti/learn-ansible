@@ -1,16 +1,28 @@
-- name: Demo on variables
+- name: Demo on task variables
   hosts: localhost
+  vars:
+    URL: sample.com
   tasks:
     - name: Print URL variable
       ansible.builtin.debug:
         msg: "{{ URL }}"
-      vars:
-        URL: sample.com
+
+
+# Value starts with a variable, like msg: {{ URL }} then quotes are needed, if it doesnot start with variable like msg: Hello {{ URL }}, then quotes are not needed.
+
+- name: Demo on task variables
+  hosts: localhost
+  tasks:
     - name: Print URL1 variable
       ansible.builtin.debug:
         msg: "{{ URL1 }}"
       vars:
         URL1: sample.com
+    - name: Print URL2 variable
+      ansible.builtin.debug:
+        msg: "{{ URL2 }}"
+      vars:
+        URL2: sample.com
 
-# Value starts with a variable, like msg: {{ URL }} then quotes are needed, if it doesnot start with variable like msg: Hello {{ URL }}, then quotes are not needed.
-
+# declare variables using command line because command line have highest precisense.
+# Syntax for above code ansible-playbook 01.variable.yml -e URL1=sample.com -e URL2=example.com
