@@ -1,11 +1,16 @@
 - name: Demo on variables
   hosts: localhost
-  vars:
-    URL: sample.com
   tasks:
     - name: Print URL variable
       ansible.builtin.debug:
         msg: "{{ URL }}"
+      vars:
+        URL: sample.com
+    - name: Print URL1 variable
+      ansible.builtin.debug:
+        msg: "{{ URL1 }}"
+      vars:
+        URL1: sample.com
 
 # Value starts with a variable, like msg: {{ URL }} then quotes are needed, if it doesnot start with variable like msg: Hello {{ URL }}, then quotes are not needed.
 
