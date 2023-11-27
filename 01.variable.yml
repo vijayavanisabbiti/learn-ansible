@@ -26,3 +26,14 @@
 
 # declare variables using command line because command line have highest precisense.
 # Syntax for above code ansible-playbook 01.variable.yml -e URL1=sample.com -e URL2=example.com
+
+- name: Register variable example
+  hosts: localhost
+  tasks:
+    - name: get Uptime of server
+      ansible.builtin.shell: uptime
+      register: OUT
+    - name: Print Out var
+      ansible.builtin.debug:
+        msg: "{{ OUT }}"
+
