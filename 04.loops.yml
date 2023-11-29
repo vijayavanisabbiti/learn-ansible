@@ -9,3 +9,16 @@
         - banana
         - orange
 
+
+- name: Demo on loops
+  hosts: localhost
+  vars:
+    fruits:
+      - apple
+      - banana
+      - orange
+  tasks:
+    - name: loops
+      ansible.builtin.debug:
+        msg: Fruit_name - {{ item }}
+      loop: "{{fruits}}"
