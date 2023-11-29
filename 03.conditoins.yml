@@ -3,9 +3,9 @@
   tasks:
     - name: Print Linux
       ansible.builtin.debug:
-        msg: Hello Linux
+        msg: {{ Hello Linux }}
 
     - name: Print unix
       ansible.builtin.debug:
-        msg: Hello Unix
+        msg: {{ Hello uinux }}
 
