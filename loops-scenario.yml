@@ -1,7 +1,10 @@
 - name: join devops
   hosts: all
   tasks:
-    - name: Print data from text file
-      ansible.builtin.debug:
-        msg: {{ lookup('ansible.builtin.file', 'joindevops.txt') }}
+    - name: Retry a task until a certain condition is met
+      ansible.builtin.template:
+        src: joindevops.txt
+      register: result
+      until: result.stdout.find("11. Kubernetes") != -1
+      retries: 12
 
