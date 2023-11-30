@@ -1,0 +1,10 @@
+- name: Demo on Fiters
+  hosts: localhost
+  tasks:
+    - name: Run Uptime command
+      ansible.builtin.shell: uptime
+      register: OUT
+
+    - name: No of users logged in
+      ansible.builtin.debug:
+        msg: {{ OUT }}
