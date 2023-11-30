@@ -1,0 +1,6 @@
+- name: Demo on Facts
+  hosts: localhost
+  tasks:
+    - name: Print Date and time
+      ansible.builtin.debug:
+        msg: "{{ ansible_date_time }}"
